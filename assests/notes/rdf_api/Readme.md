@@ -172,8 +172,7 @@ model.write(System.out);
 ```
 <rdf:RDF
   xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
-  xmlns:vcard='http://www.w3.org/2001/vcard-rdf/3.0#'
- >
+  xmlns:vcard='http://www.w3.org/2001/vcard-rdf/3.0#'>
   <rdf:Description rdf:about='http://somewhere/JohnSmith'>
     <vcard:FN>John Smith</vcard:FN>
     <vcard:N rdf:nodeID="A0"/>
@@ -237,8 +236,7 @@ read（）方法调用的第二个参数是URI，它将用于解析相对URI。 
 ```
 <rdf:RDF
   xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
-  xmlns:vcard='http://www.w3.org/2001/vcard-rdf/3.0#'
- >
+  xmlns:vcard='http://www.w3.org/2001/vcard-rdf/3.0#'>
   <rdf:Description rdf:nodeID="A0">
     <vcard:Family>Smith</vcard:Family>
     <vcard:Given>John</vcard:Given>
@@ -281,7 +279,7 @@ read（）方法调用的第二个参数是URI，它将用于解析相对URI。 
 在上一节中，我们看到了输出XML声明了一个名称空间前缀vcard，并使用该前缀来缩写URI。 尽管RDF仅使用完整的URI，而不使用这种缩短的形式，但Jena提供了使用前缀映射来控制用于输出的名称空间的方法。 这是一个简单的例子。
 
 ```
-Model m = ModelFactory.createDefaultModel();
+ Model m = ModelFactory.createDefaultModel();
  String nsA = "http://somewhere/else#";
  String nsB = "http://nowhere/else#";
  Resource root = m.createResource( nsA + "root" );
