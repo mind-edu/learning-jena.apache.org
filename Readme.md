@@ -30,3 +30,10 @@ Apache Jena（或简写为Jena）是一个免费的开源Java框架，用于构�
 - TDB-快速持久的三重存储，直接存储到磁盘
 - SQL DB-使用SQL数据库作为存储层构造持久性Jena模型
 - 工具-各种命令行工具和实用程序，可帮助开发人员管理RDF数据和Jena的其他方面
+
+### 框架结构
+
+不同API之间的交互：
+
+![](./assests/img/jena-architecture.png)
+
