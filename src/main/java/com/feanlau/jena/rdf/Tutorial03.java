@@ -1,19 +1,20 @@
 package com.feanlau.jena.rdf;
 
 import org.apache.jena.rdf.model.*;
-import org.apache.jena.vocabulary.*;
+import org.apache.jena.vocabulary.VCARD;
 
 
-/** Tutorial 3 Statement attribute accessor methods
+/**
+ * Tutorial 3 Statement attribute accessor methods
  */
 public class Tutorial03 extends Object {
-    public static void main (String args[]) {
+    public static void main(String args[]) {
 
         // some definitions
-        String personURI    = "http://somewhere/JohnSmith";
-        String givenName    = "John";
-        String familyName   = "Smith";
-        String fullName     = givenName + " " + familyName;
+        String personURI = "http://somewhere/JohnSmith";
+        String givenName = "John";
+        String familyName = "Smith";
+        String fullName = givenName + " " + familyName;
         // create an empty model
         Model model = ModelFactory.createDefaultModel();
 
@@ -32,10 +33,10 @@ public class Tutorial03 extends Object {
 
         // print out the predicate, subject and object of each statement
         while (iter.hasNext()) {
-            Statement stmt      = iter.nextStatement();         // get next statement
-            Resource  subject   = stmt.getSubject();   // get the subject
-            Property  predicate = stmt.getPredicate(); // get the predicate
-            RDFNode   object    = stmt.getObject();    // get the object
+            Statement stmt = iter.nextStatement();         // get next statement
+            Resource subject = stmt.getSubject();   // get the subject
+            Property predicate = stmt.getPredicate(); // get the predicate
+            RDFNode object = stmt.getObject();    // get the object
 
             System.out.print(subject.toString());
             System.out.print(" " + predicate.toString() + " ");

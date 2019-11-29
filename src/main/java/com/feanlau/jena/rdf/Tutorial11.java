@@ -1,15 +1,18 @@
 package com.feanlau.jena.rdf;
 
-import org.apache.jena.rdf.model.*;
-import org.apache.jena.vocabulary.*;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.vocabulary.RDFS;
 
 import java.io.PrintWriter;
 
-/** Tutorial 11 - more on literals
+/**
+ * Tutorial 11 - more on literals
  */
 public class Tutorial11 extends Object {
 
-    public static void main (String args[]) {
+    public static void main(String args[]) {
         // create an empty graph
         Model model = ModelFactory.createDefaultModel();
 
@@ -36,6 +39,6 @@ public class Tutorial11 extends Object {
                 .addLiteral(RDFS.label, 11);
 
         // write out the graph
-        model.write( System.out, "N-TRIPLE");
+        model.write(System.out, "N-TRIPLE");
     }
 }

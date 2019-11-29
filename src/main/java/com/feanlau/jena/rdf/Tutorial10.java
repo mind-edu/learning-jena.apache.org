@@ -2,26 +2,27 @@ package com.feanlau.jena.rdf;
 
 import org.apache.jena.rdf.model.*;
 import org.apache.jena.util.FileManager;
-import org.apache.jena.vocabulary.*;
+import org.apache.jena.vocabulary.VCARD;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
-/** Tutorial 10 - demonstrate a container
+/**
+ * Tutorial 10 - demonstrate a container
  */
 public class Tutorial10 extends Object {
 
     static final String inputFileName = "vc-db-1.rdf";
 
-    public static void main (String args[]) {
+    public static void main(String args[]) {
         // create an empty model
         Model model = ModelFactory.createDefaultModel();
 
         // use the class loader to find the input file
-        InputStream in = FileManager.get().open( inputFileName );
+        InputStream in = FileManager.get().open(inputFileName);
         if (in == null) {
-            throw new IllegalArgumentException( "File: " + inputFileName + " not found");
+            throw new IllegalArgumentException("File: " + inputFileName + " not found");
         }
 
         // read the RDF/XML file
@@ -42,7 +43,7 @@ public class Tutorial10 extends Object {
                         });
         // add the Smith's to the bag
         while (iter.hasNext()) {
-            smiths.add( iter.nextStatement().getSubject());
+            smiths.add(iter.nextStatement().getSubject());
         }
 
         // print the graph as RDF/XML

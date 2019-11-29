@@ -1,26 +1,31 @@
 package com.feanlau.jena.rdf;
 
-import org.apache.jena.rdf.model.*;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.rdf.model.StmtIterator;
 import org.apache.jena.util.FileManager;
-import org.apache.jena.vocabulary.*;
+import org.apache.jena.vocabulary.VCARD;
 
-import java.io.*;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
-/** Tutorial navigating a model
+/**
+ * Tutorial navigating a model
  */
 public class Tutorial06 extends Object {
 
     static final String inputFileName = "vc-db-1.rdf";
     static final String johnSmithURI = "http://somewhere/JohnSmith";
 
-    public static void main (String args[]) {
+    public static void main(String args[]) {
         // create an empty model
         Model model = ModelFactory.createDefaultModel();
 
         // use the FileManager to find the input file
         InputStream in = FileManager.get().open(inputFileName);
         if (in == null) {
-            throw new IllegalArgumentException( "File: " + inputFileName + " not found");
+            throw new IllegalArgumentException("File: " + inputFileName + " not found");
         }
 
         // read the RDF/XML file
