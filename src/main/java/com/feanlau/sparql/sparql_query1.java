@@ -1,11 +1,9 @@
 package com.feanlau.sparql;
 
-
-
 import org.apache.jena.query.*;
-        import org.apache.jena.rdf.model.Model;
-        import org.apache.jena.rdf.model.Resource;
-        import org.apache.jena.util.FileManager;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.util.FileManager;
 
 /**
  * ARQ中基础查询的例子，学习如何解析SPARQL查询语句，并且执行查询
@@ -47,7 +45,7 @@ public class sparql_query1 {
             ResultSet results = qexec.execSelect();
 
             System.out.println(results.nextSolution());
-//            // 遍历结果，进行处理
+            // 遍历结果，进行处理
             for (; results.hasNext(); ) {
                 // 获取每一条查询结果
                 QuerySolution soln = results.nextSolution();
@@ -60,7 +58,6 @@ public class sparql_query1 {
             e.printStackTrace();
         }
     }
-
 
 
     public static void main(String[] args) {
