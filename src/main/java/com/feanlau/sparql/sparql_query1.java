@@ -3,6 +3,7 @@ package com.feanlau.sparql;
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.util.FileManager;
 
 /**
@@ -44,16 +45,14 @@ public class sparql_query1 {
             // 获取查询之后的结果
             ResultSet results = qexec.execSelect();
 
-            System.out.println(results.nextSolution());
-            // 遍历结果，进行处理
+
             for (; results.hasNext(); ) {
-                // 获取每一条查询结果
                 QuerySolution soln = results.nextSolution();
+                RDFNode x= soln.get("x");
                 Resource r = soln.getResource("x");
-                // RDFNode x = soln.get("varName")
-                // Literal l = soln.getLiteral("varL")
                 System.out.println("查询结果为：" + r.toString());
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
