@@ -1,9 +1,8 @@
 package com.feanlau.sparql;
 
-import org.apache.jena.query.*;
+import org.apache.jena.query.QueryExecutionFactory;
+import org.apache.jena.query.ResultSet;
 import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.Resource;
-import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.util.FileManager;
 
 /**
@@ -32,26 +31,22 @@ public class sparql_query1 {
         Model model = FileManager.get().loadModel("vc-db-1.rdf");
 
         // 编写查询语句，可以看到挺麻烦的
-        String queryString = "SELECT ?x" +
+        String queryString = "SELECT ?test" +
                 "WHERE { " +
-                "?x  <http://www.w3.org/2001/vcard-rdf/3.0#FN>  \"John Smith\" " +
+                "?test  <http://www.w3.org/2001/vcard-rdf/3.0#FN>  \"John Smith\" " +
                 "}";
 
-        // 通过QueryFactory解析查询语句，获取Query对象
-        Query query = QueryFactory.create(queryString);
+        model.write(System.out, "TURTLE");
+
+
         try {
-            // 通过QueryExecution执行查询语句
-            QueryExecution qexec = QueryExecutionFactory.create(query, model);
-            // 获取查询之后的结果
-            ResultSet results = qexec.execSelect();
 
+            ResultSet resultSet = QueryExecutionFactory
+                    .create(queryString, model)
+                    .execSelect();
 
-            for (; results.hasNext(); ) {
-                QuerySolution soln = results.nextSolution();
-                RDFNode x= soln.get("x");
-                Resource r = soln.getResource("x");
-                System.out.println("查询结果为：" + r.toString());
-            }
+            // jdk 1.8 forEachRemaining lamada表达式
+            resultSet.forEachRemaining(qsol -> System.out.println(qsol.toString()));
 
         } catch (Exception e) {
             e.printStackTrace();
